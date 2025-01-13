@@ -34,11 +34,19 @@
     </div>
     <script>
       const exerciseForm = document.getElementById("exercise-form");
-
-      exerciseForm.addEventListener("submit", () => {
+    
+      exerciseForm.addEventListener("submit", function(event) {
+        event.preventDefault();
+    
         const userId = document.getElementById("uid").value;
+    
+        if (!userId) {
+          alert("Please provide a user ID.");
+          return;
+        }
+    
         exerciseForm.action = `/api/users/${userId}/exercises`;
-
+    
         exerciseForm.submit();
       });
     </script>
